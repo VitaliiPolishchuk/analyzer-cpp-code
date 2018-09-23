@@ -14,6 +14,8 @@ public class LexemClass {
     public static int comma = 5;
     public static int identifier = 6;
     public static int constantSymbol = 7;
+    public static int dotComma = 8;
+    public static int operator = 9;
 
     public static Set<String> specialWords = new HashSet<String>();
 
@@ -28,7 +30,18 @@ public class LexemClass {
         lexemDictionary.put("5", "Comma");
         lexemDictionary.put("6", "Identifier");
         lexemDictionary.put("7", "Constant Symbol");
+        lexemDictionary.put("8", "Dot Comma");
+        lexemDictionary.put("9", "Operator");
 
         specialWords.add("int");
+    }
+
+    public static boolean isOperation(char ch){
+        if("<+>=-/*%".contains(Character.toString(ch))){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

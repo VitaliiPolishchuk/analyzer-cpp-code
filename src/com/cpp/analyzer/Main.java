@@ -113,6 +113,35 @@ public class Main {
                             } else {
                                 lexems.add(new Lexem(token, LexemClass.identifier));
                             }
+                        } else if(subline.charAt(i) == ';'){
+                            lexems.add(new Lexem(";", LexemClass.dotComma));
+                        } else if(LexemClass.isOperation(subline.charAt(i))){
+                            token += subline.charAt(i);
+                            i++;
+                            if(i < subline.length()){
+                                if(subline.charAt(i) == '='){
+                                    token += subline.charAt(i);
+                                } else if(subline.charAt(i - 1) == '<' && subline.charAt(i) == '<'){
+                                    i++;
+                                    if(subline.charAt(i) == '=') {
+                                        token = "<<=";
+                                    } else {
+                                        i--;
+                                        token = "<<";
+                                    }
+                                } else if(subline.charAt(i - 1) == '>' && subline.charAt(i) == '>'){
+                                    i++;
+                                    if(subline.charAt(i) == '=') {
+                                        token = ">>=";
+                                    } else {
+                                        i--;
+                                        token = ">>";
+                                    }
+                                } else {
+                                    i--;
+                                }
+                            }
+                            lexems.add(new Lexem(token, LexemClass.operator));
                         }
                     }
             }
