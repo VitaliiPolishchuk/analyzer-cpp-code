@@ -34,6 +34,15 @@ public class LexemClass {
         lexemDictionary.put("9", "Operator");
 
         specialWords.add("int");
+        specialWords.add("print");
+        specialWords.add("void");
+        specialWords.add("struct");
+        specialWords.add("char");
+        specialWords.add("for");
+        specialWords.add("static");
+        specialWords.add("if");
+        specialWords.add("while");
+        specialWords.add("else");
     }
 
     public static boolean isOperation(char ch){

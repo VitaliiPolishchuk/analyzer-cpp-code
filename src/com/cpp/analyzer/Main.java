@@ -12,8 +12,10 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new FileReader("code.cpp"))) {
             String sCurrentLine;
             ArrayList<Lexem> lexems = new ArrayList<Lexem>();
+            String subline = new String();
             while ((sCurrentLine = br.readLine()) != null) {
-                String subline = sCurrentLine;
+                subline +=sCurrentLine;
+            }
                     for (int i = 0; i < subline.length(); i++) {
                         if(Character.isSpaceChar(subline.charAt(i))){
                             continue;
@@ -98,7 +100,7 @@ public class Main {
                             }
                         } else if(subline.charAt(i) == ','){
                             lexems.add(new Lexem(",", LexemClass.comma));
-                        } else if(Character.isLetter(subline.charAt(i))){
+                        } else if(Character.isLetter(subline.charAt(i)) || subline.charAt(i) == '_'){
                             token += subline.charAt(i);
                             for(i++; i <subline.length(); i++){
                                 if(Character.isLetterOrDigit(subline.charAt(i)) || subline.charAt(i) == '_'){
@@ -144,7 +146,6 @@ public class Main {
                             lexems.add(new Lexem(token, LexemClass.operator));
                         }
                     }
-            }
 
             for(Lexem lexem: lexems){
                 System.out.println(lexem.getToken() + " - " + LexemClass.lexemDictionary.get(Integer.toString(lexem.getClassLexem())));
