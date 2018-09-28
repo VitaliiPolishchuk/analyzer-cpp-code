@@ -16,4 +16,8 @@ public class Lexem {
     public int getClassLexem() {
         return classLexem;
     }
+
+    public String toString(){
+        return this.getToken() + " - " + CppLexemClass.lexemDictionary.get(Integer.toString(this.getClassLexem()));
+    }
 }
