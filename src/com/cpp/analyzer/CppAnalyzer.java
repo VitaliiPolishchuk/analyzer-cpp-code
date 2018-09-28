@@ -14,9 +14,8 @@ public class CppAnalyzer {
 
             if(Character.isSpaceChar(cppCode.charAt(currentIndex))){
                 continue;
-            }
-
-            if (cppCode.charAt(currentIndex) == '"'){
+            } 
+            else if (cppCode.charAt(currentIndex) == '"'){
                 currentIndex = addConstantString(currentIndex);
             }
             else if (cppCode.charAt(currentIndex) == '\''){
