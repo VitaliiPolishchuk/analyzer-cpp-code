@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class LexemClass {
+public class CppLexemClass {
+    //dictionary variable
     public static int digit = 0;
     public static int string = 1;
     public static int derective = 2;
@@ -17,11 +18,11 @@ public class LexemClass {
     public static int dotComma = 8;
     public static int operator = 9;
 
-    public static Set<String> specialWords = new HashSet<String>();
+    public static Set<String> specialWords = new HashSet<String>();//special words C++ (int, double, ..., void)
 
-    static Map<String, String> lexemDictionary = new HashMap<String, String>();
+    static Map<String, String> lexemDictionary = new HashMap<String, String>(); //dictionary for returning name of lexem with help of dictionary variable (line 9)
 
-    static {
+    static { //initialize lexemDictionary and specialWords
         lexemDictionary.put("0", "Digit");
         lexemDictionary.put("1", "String");
         lexemDictionary.put("2", "Derective");
@@ -45,7 +46,7 @@ public class LexemClass {
         specialWords.add("else");
     }
 
-    public static boolean isOperation(char ch){
+    public static boolean isOperation(char ch){ //check if char symbol is operation
         if("<+>=-/*%".contains(Character.toString(ch))){
             return true;
         }
